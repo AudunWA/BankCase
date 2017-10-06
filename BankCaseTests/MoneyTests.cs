@@ -11,5 +11,22 @@ namespace BankCase.Tests
         {
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Money(-1));
         }
+
+        [TestMethod]
+        public void TestMoneyAddition()
+        {
+            Money money1 = new Money(25);
+            Money money2 = new Money(30);
+            Money result = money1 + money2;
+            Assert.AreEqual(new Money(55), result);
+        }
+
+        [TestMethod]
+        public void TestMoneySubstractionCannotHaveNegativeSum()
+        {
+            Money money1 = new Money(25);
+            Money money2 = new Money(30);
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => money1 - money2);
+        }
     }
 }
